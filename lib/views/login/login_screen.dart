@@ -100,6 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         setState(() {
                           _isLoading = true;
                         });
+
                       },
                       child: Card(
                         elevation: 50,

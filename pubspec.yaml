@@ -19,6 +19,8 @@ dependencies:
   cupertino_icons: ^1.0.0
   flutter_form_builder: ^4.2.0 #form builder with validations
   loading_elevated_button: ^0.0.4 #show_loading animation after button click for http request
+  dio: ^3.0.10 #For http Requests
+  provider: ^4.3.3
 
 dev_dependencies:
   flutter_test:

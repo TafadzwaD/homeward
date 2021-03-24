@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:homeward/utilities/utilities.dart';
+import 'package:homeward/utilities/theme_utilities.dart';
 import 'package:loading_elevated_button/loading_elevated_button.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -97,9 +97,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     GestureDetector(
                       onTap: (){
-                        setState(() {
-                          _isLoading = true;
-                        });
+                        if(_formKey.currentState.saveAndValidate()){
+                          setState(() {
+                            _isLoading = true;
+                          });
+                          var email = _formKey.currentState.value['email'];
+                          var password = _formKey.currentState.value['password'];
+
+
+                        }
+
 
                       },
                       child: Card(

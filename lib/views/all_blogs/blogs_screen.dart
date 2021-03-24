@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:homeward/providers/authentication_provider.dart';
 
-class BlogsScreen extends StatelessWidget {
+class BlogsHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print('Bearer token in blogs ${AuthProvider().bearerToken}');

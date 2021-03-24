@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         ),
         home: Consumer<AuthProvider>(builder:(context, state,child){
           print(state.isLoggedIn);
-          return state.isLoggedIn ? BlogsScreen() : LoginScreen();
+          return state.isLoggedIn ? BlogsHomeScreen() : LoginScreen();
         } ),
       ),
     );

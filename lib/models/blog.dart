@@ -1,11 +1,21 @@
 class Blog {
-  final String title;
-  final String image;
-  final DateTime createdOn;
+   String id;
+   String title;
+   String imageUrl;
+   DateTime createdAt;
 
   Blog({
+    this.id,
     this.title,
-    this.image,
-    this.createdOn,
+    this.imageUrl,
+    this.createdAt,
   });
+
+
+  Blog.fromJson(Map<String,dynamic> json){
+    id = json['id'];
+    title = json['createdAt'];
+    createdAt = json['createdAt'];
+    imageUrl = json['imageUrl'];
+  }
 }

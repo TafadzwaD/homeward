@@ -30,40 +30,50 @@ class BlogsHomeScreen extends StatelessWidget {
                       );
                     });
               }
-              return CircularProgressIndicator();
+              return Center(child: CircularProgressIndicator(),);
             }),
       ),
     );
   }
 
   Widget _blogContainer({@required Blog blog}) {
-    return Container(
-      color: Colors.white,
-      child: Stack(
-        children: [
-          // Container(
-          //   width: 60,
-          //   height: 60,
-          //   color: mainThemeColor,
-          // ),
-          Container(
-            margin: const EdgeInsets.all(16.0),
-            child: ListTile(
-              leading: Container(
-                  height: 130,
-                  width: 80,
-                  child: Image.network(
-                    blog.imageUrl,
-                    height: 130,
-                  )),
-              title: Text(
-                blog.title,
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-              ),
-              subtitle: Text(DateFormat.yMMMEd().format(blog.createdAt)),
-            ),
-          )
-        ],
+    return GestureDetector(
+      onTap: (){
+        print('Clicked on ${blog.id}');
+      },
+      child: Container(
+        // color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Stack(
+            children: [
+              // Container(
+              //   width: 60,
+              //   height: 60,
+              //   color: mainThemeColor,
+              // ),
+              Card(
+                elevation: 50,
+                color: Colors.white,
+                shadowColor: Colors.black,
+                child: ListTile(
+                  leading: Container(
+                      height: 140,
+                      width: 80,
+                      child: Image.network(
+                        blog.imageUrl,
+                        height: 130,
+                      )),
+                  title: Text(
+                    blog.title,
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text(DateFormat.yMMMEd().format(blog.createdAt)),
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

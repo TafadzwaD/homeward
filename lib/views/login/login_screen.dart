@@ -10,6 +10,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormBuilderState>();
+  bool _isLoading = false; //Login Button State
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(20),
                   // boxShadow: [
                   //   BoxShadow(
                   //     color: themeBlue,
@@ -48,21 +50,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     Card(
                       elevation: 50,
                       child: FormBuilderTextField(
-                        name: 'password',
+                        name: 'email',
                         decoration: InputDecoration(
-                            labelText: 'Password',
-                            hintText: 'Password',
+                            labelText: 'Email',
+                            hintText: '***@***.**',
+                            prefixIcon: Icon(Icons.email_outlined,size: 30,),
                             hintStyle: hintTextStyle,
+                            labelStyle: hintTextStyle,
                             errorStyle: errorTextStyle,
                             border: OutlineInputBorder(
                                 borderRadius:
-                                BorderRadius.circular(10.0))),
-                        obscureText: true,
+                                BorderRadius.circular(5.0))),
                         validator: FormBuilderValidators.compose([
                           FormBuilderValidators.required(context),
-                          FormBuilderValidators.minLength(context, 6,
+                          FormBuilderValidators.email(context,
                               errorText:
-                              'Should not be less than 5 characters'),
+                              'Enter Valid Email'),
                         ]),
                       ),
                     ),
@@ -76,10 +79,13 @@ class _LoginScreenState extends State<LoginScreen> {
                             labelText: 'Password',
                             hintText: 'Password',
                             hintStyle: hintTextStyle,
+                            prefixIcon: Icon(Icons.lock_outline,size: 30,),
+                            labelStyle: hintTextStyle,
                             errorStyle: errorTextStyle,
                             border: OutlineInputBorder(
                                 borderRadius:
-                                BorderRadius.circular(10.0))),
+                                BorderRadius.circular(5.0))),
+
                         obscureText: true,
                         validator: FormBuilderValidators.compose([
                           FormBuilderValidators.required(context),
@@ -89,12 +95,37 @@ class _LoginScreenState extends State<LoginScreen> {
                         ]),
                       ),
                     ),
-                    Card(
-                      elevation: 50,
-                      color: Colors.white,
-                      shadowColor: Colors.black,
-                      child: LoadingElevatedButton(onPressed: null, child: null),
+                    GestureDetector(
+                      onTap: (){
+                        setState(() {
+                          _isLoading = true;
+                        });
+                      },
+                      child: Card(
+                        elevation: 50,
+
+
+                        child:Container(
+                          height: 60,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              gradient: LinearGradient(
+                                  colors: [Colors.teal, mainThemeColor])),
+                          child: LoadingElevatedButton(
+                            isLoading: _isLoading,
+                            disabledWhileLoading: true,
+                            child: Center(
+                                child: Text(
+                                  'Login',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                )),
+                          ),
+                        )),
                     ),
+
                   ],
                 ),
               ),

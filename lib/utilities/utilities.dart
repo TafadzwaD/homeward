@@ -5,6 +5,6 @@ import 'package:flutter/material.dart';
 const TextStyle errorTextStyle =  TextStyle(
     color: Colors.red
 );const TextStyle hintTextStyle =  TextStyle(
-    color: Colors.white,
+    color: mainThemeColor,
     fontWeight: FontWeight.bold
 );

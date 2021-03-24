@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'views/login/login_screen.dart';
 import 'utilities/all_providers.dart';
 import 'views/all_blogs/blogs_screen.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -15,7 +16,6 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: providers,
       child: MaterialApp(
-
         theme: ThemeData(
           // This is the theme of your application.
           //
@@ -26,19 +26,20 @@ class MyApp extends StatelessWidget {
           // or simply save your changes to "hot reload" in a Flutter IDE).
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
-       fontFamily: 'Poppins',
+          fontFamily: 'Poppins',
           // This makes the visual density adapt to the platform that you run
           // the app on. For desktop platforms, the controls will be smaller and
           // closer together (more dense) than on mobile platforms.
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: Consumer<AuthProvider>(builder:(context, state,child){
-          print(state.isLoggedIn);
-          return state.isLoggedIn ? BlogsHomeScreen() : LoginScreen();
-        } ),
+        // home: Consumer<AuthProvider>(
+        //   builder: (context, state, child) {
+        //     print(state.isLoggedIn);
+        //     return state.isLoggedIn ? BlogsHomeScreen() : LoginScreen();
+        //   },
+        // ),
+        home: BlogsHomeScreen(),
       ),
     );
   }
 }
-
-

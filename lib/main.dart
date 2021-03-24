@@ -32,13 +32,13 @@ class MyApp extends StatelessWidget {
           // closer together (more dense) than on mobile platforms.
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        // home: Consumer<AuthProvider>(
-        //   builder: (context, state, child) {
-        //     print(state.isLoggedIn);
-        //     return state.isLoggedIn ? BlogsHomeScreen() : LoginScreen();
-        //   },
-        // ),
-        home: BlogsHomeScreen(),
+        home: Consumer<AuthProvider>(
+          builder: (context, state, child) {
+            print(state.isLoggedIn);
+            return state.isLoggedIn ? BlogsHomeScreen() : LoginScreen();
+          },
+        ),
+        // home: BlogsHomeScreen(),
       ),
     );
   }

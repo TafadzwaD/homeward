@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:homeward/providers/authentication_provider.dart';
 import 'package:provider/provider.dart';
 import 'views/login/login_screen.dart';
 import 'utilities/all_providers.dart';
-
+import 'views/all_blogs/blogs_screen.dart';
 void main() {
   runApp(MyApp());
 }
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: providers,
       child: MaterialApp(
-        title: 'Flutter Demo',
+
         theme: ThemeData(
           // This is the theme of your application.
           //
@@ -31,7 +32,10 @@ class MyApp extends StatelessWidget {
           // closer together (more dense) than on mobile platforms.
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: LoginScreen(),
+        home: Consumer<AuthProvider>(builder:(context, state,child){
+          print(state.isLoggedIn);
+          return state.isLoggedIn ? BlogsScreen() : LoginScreen();
+        } ),
       ),
     );
   }

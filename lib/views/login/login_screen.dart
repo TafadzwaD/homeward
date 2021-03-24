@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:homeward/providers/authentication_provider.dart';
 import 'package:homeward/utilities/theme_utilities.dart';
 import 'package:loading_elevated_button/loading_elevated_button.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -103,6 +105,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           });
                           var email = _formKey.currentState.value['email'];
                           var password = _formKey.currentState.value['password'];
+                          AuthProvider authProvider = Provider.of<AuthProvider>(context,listen: false);
+                          authProvider.login(email: email,password: password);
 
 
                         }

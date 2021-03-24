@@ -4,10 +4,20 @@ import 'package:flutter/widgets.dart';
 import 'package:dio/dio.dart';
 import 'package:homeward/utilities/configurations.dart';
 
-
+String _bearerToken;
+bool _isLoggedIn;
 class AuthProvider extends ChangeNotifier {
-  bool _isLoggedIn = false;
-  String _bearerToken;
+
+
+
+  AuthProvider(){
+    _init();
+  }
+
+  _init(){
+    _isLoggedIn = false;
+
+  }
 
   Dio dio = new Dio();
 
@@ -17,7 +27,7 @@ class AuthProvider extends ChangeNotifier {
 
   });
 
-  Future signInUser({String email, String password}) {
+  Future login({String email, String password}) {
     return dio.post(
       '${APIEndpoint.loginUrl }',
     options: opts,
@@ -26,29 +36,27 @@ class AuthProvider extends ChangeNotifier {
     "password": password,
     },
     ).then((response) {
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         Map returnedResponse = response.data;
         print('Status code ${response.statusCode}');
         _bearerToken = response.data['token'];
         print('This is the bearer roken $_bearerToken');
 
-        var message = returnedResponse['message'];
+
         // _customerId = returnedResponse['id_customer'];
         // _email = email;
         print(response.data);
-        print(message);
 
-        // print(email);
-        // print(_customerId);
-
-        if (message.contains('Client Account Logged in')) {
-          return 'successful';
-        } else {
-          return 'Wrong Password or Phone Number';
-        }
+        _isLoggedIn = true;
+        notifyListeners();
       } else {
-        return 'Error Encountered . Check your network';
+        print('This is the response $response');
       }
+    }).catchError((onError){
+      print('Error encountered : ${onError.message}');
     });
   }
+
+  bool get isLoggedIn => _isLoggedIn;
+  String get bearerToken => _bearerToken;
 }

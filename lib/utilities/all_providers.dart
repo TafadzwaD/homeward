@@ -7,6 +7,7 @@ import 'package:homeward/providers/authentication_provider.dart';
 List<SingleChildWidget> providers = [
   ChangeNotifierProvider(
     create:(context) => AuthProvider(),
-    lazy: false, //make it execute after it's created. Don't wait for use
+    lazy: true,
+    //make it execute after it's created. Don't wait for use
   ),
 ];

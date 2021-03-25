@@ -8,10 +8,10 @@ Solution for interview assignment.
 
 ## Running Tests
 
- >> flutter test (to run all tests)
- >> flutter test test/models/blog_test.dart (to run blog model fromJson method test)
- >> flutter test test/views/login_screen_test.dart (to run login screen widgets test)
- >> flutter test test/views/blogs_screen_test.dart (to run blogs screen widgets test. Using mocked data provided in the folder)
+ >> flutter test (to run all tests)\
+ >> flutter test test/models/blog_test.dart (to run blog model fromJson method test)\
+ >> flutter test test/views/login_screen_test.dart (to run login screen widgets test)\
+ >> flutter test test/views/blogs_screen_test.dart (to run blogs screen widgets test. Using mocked data provided in the folder)\
 
 
 ## Pacakges Used

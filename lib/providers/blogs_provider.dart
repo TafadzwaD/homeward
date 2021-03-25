@@ -27,6 +27,11 @@ class BlogProvider extends ChangeNotifier {
     ).then((response){
       if(response.statusCode ==200){
         print('Response from blogs ${response.data}');
+        List<dynamic> blogsList = response.data;
+        List<Blog> formattedBlogList = [];
+        blogsList.forEach((blog) {
+          formattedBlogList.add(Blog.fromJson(blog));
+        });
         return response.data;
       }else{
         return null;

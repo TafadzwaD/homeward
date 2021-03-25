@@ -15,8 +15,8 @@ Solution for interview assignment.
 
 
 ## Pacakges Used
-Provider --> For State Management\
-Dio --> Http Requests\
-LoadingElevatedButton --> Show loading animation after clicking login button and deactivate the button to prevent multiple submissions. This will result to a user waiting for the response to finish.\
-Test --> For Widget,Unit and Integration Testing
+ >> Provider --> For State Management\
+ >> Dio --> Http Requests\
+ >> LoadingElevatedButton --> Show loading animation after clicking login button and deactivate the button to prevent multiple submissions. This will result to a user waiting for the response to finish.\
+ >> Test --> For Widget,Unit and Integration Testing
 

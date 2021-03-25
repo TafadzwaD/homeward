@@ -37,15 +37,9 @@ class AuthProvider extends ChangeNotifier {
     },
     ).then((response) {
       if (response.statusCode == 201) {
-        Map returnedResponse = response.data;
-        print('Status code ${response.statusCode}');
+
+
         _bearerToken = response.data['token'];
-        print('This is the bearer roken $_bearerToken');
-
-
-        // _customerId = returnedResponse['id_customer'];
-        // _email = email;
-        print(response.data);
 
         _isLoggedIn = true;
         notifyListeners();

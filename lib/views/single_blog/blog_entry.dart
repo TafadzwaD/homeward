@@ -15,7 +15,7 @@ class SingleBlogScreen extends StatelessWidget {
         body: FutureBuilder(
             future: Provider.of<BlogProvider>(context).singleBlog(blogId: blogId),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
-              print('This is the snapshot data ${snapshot.data}');
+
               if (snapshot.hasData) {
                 Blog blog = snapshot.data;
                 return Center(
@@ -35,7 +35,7 @@ class SingleBlogScreen extends StatelessWidget {
 
     return GestureDetector(
       onTap: (){
-        print('Clicked on ${blog.id}');
+
       },
       child: Container(
         // color: Colors.white,

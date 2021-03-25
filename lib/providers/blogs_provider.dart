@@ -20,7 +20,7 @@ class BlogProvider extends ChangeNotifier {
   );
 
   Future blogs() {
-    print('Bearer token in get blogs ${AuthProvider().bearerToken}');
+
     return dio.get(
       '${APIEndpoint.blogListUrl}',
       options: opts
@@ -45,19 +45,19 @@ class BlogProvider extends ChangeNotifier {
   }
 
   Future singleBlog({@required String blogId}) {
-    print('Bearer token in get blogs ${AuthProvider().bearerToken}');
+
     return dio.get(
         '${APIEndpoint.blogListUrl}/$blogId',
         options: opts
     ).then((response){
       if(response.statusCode ==200){
-        print('Response from blogs ${response.data}');
+
         return Blog.fromJson(response.data);
       }else{
         return null;
       }
     }).catchError((onError){
-      print('Error Encountered : ${onError.message}');
+
       return null;
     });
   }

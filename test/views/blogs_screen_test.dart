@@ -31,11 +31,9 @@ List _mockBlogsResponse = [
     "title": "Highway Representative",
     "imageUrl": "http://lorempixel.com/640/480/technics"
   },
-
 ];
 
 blogPoviderMock() {
-
   List<Blog> formattedBlogList = [];
   _mockBlogsResponse.forEach((blog) {
     formattedBlogList.add(Blog.fromJson(blog));
@@ -47,21 +45,14 @@ blogPoviderMock() {
 class BlogsHomeScreenForTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Scaffold(
-        body:
-
-
-
-                ListView.builder(
-                    itemCount: blogPoviderMock().length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return _blogContainer(
-                          blog: blogPoviderMock()[index], context: context);
-                    }),
-
-
+        body: ListView.builder(
+            itemCount: blogPoviderMock().length,
+            itemBuilder: (BuildContext context, int index) {
+              return _blogContainer(
+                  blog: blogPoviderMock()[index], context: context);
+            }),
       ),
     );
   }
@@ -71,7 +62,6 @@ class BlogsHomeScreenForTest extends StatelessWidget {
         DateFormat.yMMMEd().add_Hm().format(blog.createdAt);
     return GestureDetector(
       onTap: () {
-
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -97,10 +87,10 @@ class BlogsHomeScreenForTest extends StatelessWidget {
                 shadowColor: Colors.black,
                 child: ListTile(
                   leading: Container(
-                      height: 140,
-                      width: 80,
+                    height: 140,
+                    width: 80,
                     color: Colors.teal,
-                     ),
+                  ),
                   title: Text(
                     blog.title,
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
@@ -118,17 +108,19 @@ class BlogsHomeScreenForTest extends StatelessWidget {
 
 void main() {
   blogsScreen() => MaterialApp(
-    home: BlogsHomeScreenForTest(),
-  );
+    theme: ThemeData(
+      fontFamily: 'Poppins',
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+    ),
+        home: BlogsHomeScreenForTest(),
+      );
 
   group('All Blogs Screen Widgets Test : ', () {
-    testWidgets(
-        'Testing if 8 Text Widget Show On Blogs Screen',
-        (tester)  async{
+    testWidgets('Testing if 8 Text Widget Show On Blogs Screen',
+        (tester) async {
       var blogs = _mockBlogsResponse;
-       tester.pumpWidget(blogsScreen()).then((value) {
-         return expect(find.byType(Text), findsNWidgets(blogs.length*2));
-
+      tester.pumpWidget(blogsScreen()).then((value) {
+        return expect(find.byType(Text), findsNWidgets(blogs.length * 2));
       });
     });
   });

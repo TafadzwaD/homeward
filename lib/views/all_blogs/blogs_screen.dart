@@ -9,13 +9,13 @@ import 'package:intl/intl.dart';
 class BlogsHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    print('Bearer token in blogs ${AuthProvider().bearerToken}');
+
     return SafeArea(
       child: Scaffold(
         body: FutureBuilder(
             future: Provider.of<BlogProvider>(context).blogs(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
-              print('This is the snapshot data ${snapshot.data}');
+
               if (snapshot.hasData) {
                 List<dynamic> blogs = snapshot.data;
                 return ListView.builder(
@@ -37,7 +37,7 @@ class BlogsHomeScreen extends StatelessWidget {
     final String createdAt = DateFormat.yMMMEd().add_Hm().format(blog.createdAt);
     return GestureDetector(
       onTap: (){
-        print('Clicked on ${blog.id}');
+
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => SingleBlogScreen(blogId: blog.id,)),

@@ -7,6 +7,7 @@ class SingleBlogScreen extends StatelessWidget {
   final String blogId;
 
   const SingleBlogScreen({@required this.blogId});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -16,15 +17,10 @@ class SingleBlogScreen extends StatelessWidget {
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               print('This is the snapshot data ${snapshot.data}');
               if (snapshot.hasData) {
-                Map<String,dynamic> blog = snapshot.data;
+                Blog blog = snapshot.data;
                 return Center(
                   child: _blogContainer(
-                    blog: Blog(
-                      id: blog['id'],
-                      title: blog['title'],
-                      imageUrl: blog['imageUrl'],
-                      createdAt: DateTime.parse(blog['createdAt']),
-                    ),
+                    blog: blog,
                   ),
                 );
               }
@@ -35,6 +31,8 @@ class SingleBlogScreen extends StatelessWidget {
   }
 
   Widget _blogContainer({@required Blog blog}) {
+    final String createdAt = DateFormat.yMMMEd().add_Hm().format(blog.createdAt);
+
     return GestureDetector(
       onTap: (){
         print('Clicked on ${blog.id}');
@@ -66,7 +64,7 @@ class SingleBlogScreen extends StatelessWidget {
                     blog.title,
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
-                  subtitle: Text(DateFormat.yMMMEd().format(blog.createdAt)),
+                  subtitle: Text(createdAt),
                 ),
               )
             ],

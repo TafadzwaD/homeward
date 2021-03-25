@@ -21,6 +21,7 @@ dependencies:
   loading_elevated_button: ^0.0.4 #show_loading animation after button click for http request
   dio: ^3.0.10 #For http Requests
   provider: ^4.3.3 #state management
+  test: ^1.15.7 #running and running tests
 
 dev_dependencies:
   flutter_test:

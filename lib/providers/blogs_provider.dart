@@ -52,7 +52,7 @@ class BlogProvider extends ChangeNotifier {
     ).then((response){
       if(response.statusCode ==200){
         print('Response from blogs ${response.data}');
-        return response.data;
+        return Blog.fromJson(response.data);
       }else{
         return null;
       }

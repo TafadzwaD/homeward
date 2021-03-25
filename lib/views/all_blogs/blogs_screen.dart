@@ -34,7 +34,7 @@ class BlogsHomeScreen extends StatelessWidget {
   }
 
   Widget _blogContainer({@required Blog blog,@required BuildContext context}) {
-
+    final String createdAt = DateFormat.yMMMEd().add_Hm().format(blog.createdAt);
     return GestureDetector(
       onTap: (){
         print('Clicked on ${blog.id}');
@@ -71,7 +71,7 @@ class BlogsHomeScreen extends StatelessWidget {
                     blog.title,
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
-                  subtitle: Text(DateFormat.yMMMEd().add_Hm().format(blog.createdAt)),
+                  subtitle: Text(createdAt),
                 ),
               )
             ],

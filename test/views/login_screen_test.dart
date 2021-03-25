@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:homeward/providers/authentication_provider.dart';
-import 'package:homeward/providers/blogs_provider.dart';
 import 'package:homeward/utilities/all_providers.dart';
 import 'package:homeward/views/all_blogs/blogs_screen.dart';
 import 'package:homeward/views/login/login_screen.dart';

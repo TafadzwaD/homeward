@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:homeward/models/blog.dart';
-import 'package:homeward/providers/authentication_provider.dart';
 import 'package:homeward/providers/blogs_provider.dart';
-import 'package:homeward/utilities/theme_utilities.dart';
 import 'package:homeward/views/single_blog/blog_entry.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';

@@ -1,21 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:homeward/providers/authentication_provider.dart';
-import 'package:homeward/providers/blogs_provider.dart';
-import 'package:homeward/utilities/all_providers.dart';
-import 'package:homeward/views/all_blogs/blogs_screen.dart';
-import 'package:homeward/views/login/login_screen.dart';
-import 'package:loading_elevated_button/loading_elevated_button.dart';
-import 'package:provider/provider.dart';
-
-import 'package:flutter/material.dart';
 import 'package:homeward/models/blog.dart';
-import 'package:homeward/providers/authentication_provider.dart';
-import 'package:homeward/providers/blogs_provider.dart';
-import 'package:homeward/utilities/theme_utilities.dart';
 import 'package:homeward/views/single_blog/blog_entry.dart';
-import 'package:provider/provider.dart';
+
 import 'package:intl/intl.dart';
 
 List _mockBlogsResponse = [
@@ -138,7 +126,6 @@ void main() {
         'Testing if 8 Text Widget Show On Blogs Screen',
         (tester)  async{
       var blogs = _mockBlogsResponse;
-      print('Mocker ${blogs.length}');
        tester.pumpWidget(blogsScreen()).then((value) {
          return expect(find.byType(Text), findsNWidgets(blogs.length*2));
 

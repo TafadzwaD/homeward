@@ -1,4 +1,4 @@
-# homeward
+# Homeward
 
 Homeward Application Assignment
 

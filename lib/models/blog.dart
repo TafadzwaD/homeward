@@ -14,8 +14,8 @@ class Blog {
 
   Blog.fromJson(Map<String,dynamic> json){
     id = json['id'];
-    title = json['createdAt'];
-    createdAt = json['createdAt'];
+    title = json['title'];
+    createdAt = DateTime.parse(json['createdAt']); // formatting it to DateTime for sorting purposes
     imageUrl = json['imageUrl'];
   }
 }

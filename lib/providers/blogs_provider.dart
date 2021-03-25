@@ -26,13 +26,15 @@ class BlogProvider extends ChangeNotifier {
       options: opts
     ).then((response){
       if(response.statusCode ==200){
-        print('Response from blogs ${response.data}');
+
         List<dynamic> blogsList = response.data;
         List<Blog> formattedBlogList = [];
         blogsList.forEach((blog) {
           formattedBlogList.add(Blog.fromJson(blog));
         });
-        return response.data;
+        formattedBlogList.sort((a, b) => a.createdAt.compareTo(b.createdAt));
+
+        return formattedBlogList.reversed.toList();
       }else{
         return null;
       }

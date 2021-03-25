@@ -22,12 +22,7 @@ class BlogsHomeScreen extends StatelessWidget {
                     itemCount: blogs.length,
                     itemBuilder: (BuildContext context, int index) {
                       return _blogContainer(
-                        blog: Blog(
-                          id: blogs[index]['id'],
-                          title: blogs[index]['title'],
-                          imageUrl: blogs[index]['imageUrl'],
-                          createdAt: DateTime.parse(blogs[index]['createdAt']),
-                        ),
+                        blog: snapshot.data[index],
                         context: context
                       );
                     });
@@ -39,6 +34,7 @@ class BlogsHomeScreen extends StatelessWidget {
   }
 
   Widget _blogContainer({@required Blog blog,@required BuildContext context}) {
+
     return GestureDetector(
       onTap: (){
         print('Clicked on ${blog.id}');
@@ -75,7 +71,7 @@ class BlogsHomeScreen extends StatelessWidget {
                     blog.title,
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
-                  subtitle: Text(DateFormat.yMMMEd().format(blog.createdAt)),
+                  subtitle: Text(DateFormat.yMMMEd().add_Hm().format(blog.createdAt)),
                 ),
               )
             ],
